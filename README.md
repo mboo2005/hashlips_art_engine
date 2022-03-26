@@ -6,15 +6,16 @@ fork project from [HashLips](https://github.com/HashLips/hashlips_art_engine)
 # 如何发行nft到opensea
 
 ## 图片生成
-**设计** 设计制作自己的原创素材，按照不同的分层元素给出原始素材图片
+**设计** 设计制作自己的原创素材，按照不同的分层元素给出原始素材图片   
 **生成工具** 用工具生成随机不同的图片，工具可以参考hashlips。
 
 注意：一定要用同时生成meta的工具。hashlips可以生成meta
 
-什么是meta? meta是nft的描述文件，比如图片地址，编号，属性等。对于opensea来说其实是读的这个meta显示对应的nft图片
+什么是meta?    
+ meta是nft的描述文件，比如图片地址，编号，属性等。对于opensea来说其实是读的这个meta显示对应的nft图片
 
 ## 上传到ipfs
-制作好了1k张图片就，需要上传到一个永久存储的地方，供nft获取。也就是说链上其实只是记录了一个图片地址，真正的图片是off chain的（不在链上的）。标准的做法是图片放到ipfs（ipfs是一个分布式存储网络，也是基于链的），常用的ipfs存储网站有pinata，nft.storage等。
+制作好了1k张图片就需要上传到一个永久存储的地方，供nft获取。也就是说链上其实只是记录了一个图片地址，真正的图片是off chain的（不在链上的）。标准的做法是图片放到ipfs（ipfs是一个分布式存储网络，也是基于链的），常用的ipfs存储网站有pinata，nft.storage等。
 
 **坑** 这里有个坑，在操作的时候发现10k图片有3G，根本就传不上去，太慢了。并且对应pinata来说，免费版只有1G，空间不够，需要购买付费版。  
 所以这里怎么解决呢？  
@@ -42,4 +43,4 @@ meta文件（json格式），传到ipfs，可以去pinata上传
 
 部署后就可以devmint调用接口挖了。然后去opeasea看看自己账号下应该就会出现挖到的nft
 
-
+![](https://github.com/mboo2005/hashlips_art_engine/blob/main/group.jpeg)
