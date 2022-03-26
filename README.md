@@ -43,4 +43,4 @@ meta文件（json格式），传到ipfs，可以去pinata上传
 
 部署后就可以devmint调用接口挖了。然后去opeasea看看自己账号下应该就会出现挖到的nft
 
-![](https://github.com/mboo2005/hashlips_art_engine/blob/main/group.jpeg)
+![](https://github.com/mboo2005/hashlips_art_engine/blob/main/group.jpeg | width=100)
