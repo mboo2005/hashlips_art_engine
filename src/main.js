@@ -139,7 +139,6 @@ const addMetadata = (_dna, _edition) => {
     date: dateTime,
     ...extraMetadata,
     attributes: attributesList,
-    compiler: "HashLips Art Engine",
   };
   if (network == NETWORK.sol) {
     tempMetadata = {
@@ -231,6 +230,7 @@ const constructLayerToDna = (_dna = "", _layers = []) => {
       selectedElement: selectedElement,
     };
   });
+
   return mappedDnaToLayers;
 };
 
@@ -279,6 +279,31 @@ const isDnaUnique = (_DnaList = new Set(), _dna = "") => {
   return !_DnaList.has(_filteredDNA);
 };
 
+let sum = layerConfigurations[0].growEditionSizeTo
+//non random dna
+const createDna2 = (_layers) =>{
+  console.log(sum);
+  let randNum = [];
+  let choose = [];
+  let divisor = sum ;
+  for (let index =0; index <_layers.length; index++) {
+    let count = _layers[index].elements.length;
+
+    let i = divisor % count;  //余数
+    divisor = Math.floor(divisor / count);  //整数
+    let layer = _layers[index];
+    choose.push(i);
+    randNum.push(
+      `${layer.elements[i].id}:${layer.elements[i].filename}${
+        layer.bypassDNA ? "?bypassDNA=true" : ""
+      }`
+    );
+  }
+  sum --;
+  console.log(choose.join("-"));
+  return randNum.join(DNA_DELIMITER);
+}
+//random dna
 const createDna = (_layers) => {
   let randNum = [];
   _layers.forEach((layer) => {
@@ -315,7 +340,7 @@ const saveMetaDataSingleFile = (_editionCount) => {
       )
     : null;
   fs.writeFileSync(
-    `${buildDir}/json/${_editionCount}.json`,
+    `${buildDir}/json/${_editionCount}`,
     JSON.stringify(metadata, null, 2)
   );
 };
@@ -359,7 +384,7 @@ const startCreating = async () => {
     while (
       editionCount <= layerConfigurations[layerConfigIndex].growEditionSizeTo
     ) {
-      let newDna = createDna(layers);
+      let newDna = createDna2(layers);
       if (isDnaUnique(dnaList, newDna)) {
         let results = constructLayerToDna(newDna, layers);
         let loadedElements = [];
